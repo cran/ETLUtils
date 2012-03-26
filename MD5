@@ -1,0 +1,14 @@
+dcc003ddc1712561d430d665837fe9a3 *DESCRIPTION
+370e7a357f36a0fee107e76c960004c4 *NAMESPACE
+9aa69730968a79e1e039d0bd955c9dc7 *NEWS
+58f9bc0b7658c39f19ce8c5fcd805c0b *R/ETLUtils-package.R
+fb8c764ea97c27117919c4be7f701ade *R/ffutils.R
+c43c48e0a29320713a7b952e0b93fefc *R/matchmerge.R
+17ebfd7afda665197f6f4652f966071e *R/utils.R
+e69c80c7c135b8026e397c0a1402b226 *inst/smalldb.sqlite3
+4f568f2e96e357cab776d7f66d5fd8f5 *man/ETLUtils-package.Rd
+80289a61213a103bf1ef652316f09e18 *man/matchmerge.Rd
+c3fbaf0d379c63d35f00d1ec9a93b9df *man/naLOCFPlusone.Rd
+b0c50843c1294e4ae2c0ce8f576e7304 *man/read.dbi.ffdf.Rd
+f3dabd1c41d76c84c6c423faed30dd32 *man/recoder.Rd
+9203317680fc9cea75dec03964018e45 *man/renameColumns.Rd
