@@ -106,6 +106,7 @@ matchmerge(x=left, y=right$b, by.x = left$idlhs, by.y = right$idrhs, all.x=TRUE,
 by.iskey=TRUE, add.columns="b.renamed")
 
 ## Show speedup difference with merge
+\dontrun{
 size <- 100000
 dimension <- seq(Sys.Date(), Sys.Date()+10, by = "day")
 left <- data.frame(date = rep(dimension, size), sales = rnorm(size))
@@ -114,7 +115,7 @@ dim(left)
 dim(right)
 print(system.time(merge(left, right, by.x="date", by.y="date", all.x=TRUE, all.y=FALSE)))
 print(system.time(matchmerge(left, right, by.x="date", by.y="date", all.x=TRUE, by.iskey=FALSE)))
-
+}
 ## Show example usage
 products <- expand.grid(product = c("Pepsi", "Coca Cola"), type = c("Can","Bottle"),
 size = c("6Ml","8Ml"), distributor = c("Distri X","Distri Y"), salesperson = c("Mr X","Mr Y"),

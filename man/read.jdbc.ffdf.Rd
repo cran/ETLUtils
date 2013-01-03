@@ -1,10 +1,10 @@
-\name{read.odbc.ffdf}
-\alias{read.odbc.ffdf}
-\title{Read data from a ODBC connection into an ffdf.}
+\name{read.jdbc.ffdf}
+\alias{read.jdbc.ffdf}
+\title{Read data from a JDBC connection into an ffdf.}
 \usage{
-  read.odbc.ffdf(query = NULL,
-    odbcConnect.args = list(dsn = NULL, uid = "", pwd = ""),
-    odbcQuery.args = list(), sqlGetResults.args = list(),
+  read.jdbc.ffdf(query = NULL,
+    dbConnect.args = list(drv = NULL, dbname = NULL, username = "", password = ""),
+    dbSendQuery.args = list(), fetch.args = list(),
     x = NULL, nrows = -1, first.rows = NULL,
     next.rows = NULL, levels = NULL, appendLevels = TRUE,
     asffdf_args = list(),
@@ -13,27 +13,25 @@
     ...)
 }
 \arguments{
-  \item{query}{the SQL query to execute on the ODBC
+  \item{query}{the SQL query to execute on the JDBC
   connection}
 
-  \item{odbcConnect.args}{a list of arguments to pass to
-  ODBC's \code{\link[RODBC]{odbcConnect}} (like dsn, uid,
-  pwd). See the examples.}
+  \item{dbConnect.args}{a list of arguments to pass to
+  JDBC's \code{RJDBC::dbConnect} (like drv, dbname,
+  username, password). See the examples.}
 
-  \item{odbcQuery.args}{a list of arguments to pass to
-  ODBC's \code{\link[RODBC]{odbcQuery}}, like rows_at_time.
-  Defaults to an empty list.}
+  \item{dbSendQuery.args}{a list containing
+  database-specific parameters which will be passed to to
+  pass to \code{RJDBC::dbSendQuery}. Defaults to an empty
+  list.}
 
-  \item{sqlGetResults.args}{a list containing optional
-  parameters which will be passed to
-  \code{\link[RODBC]{sqlGetResults}}. Defaults to an empty
-  list. The max parameter will be overwritten with
-  first.rows and next.rows when importing in batches.}
+  \item{fetch.args}{a list containing optional
+  database-specific parameters which will be passed to to
+  pass to \code{RJDBC::fetch}. Defaults to an empty list.}
 
   \item{x}{NULL or an optional ffdf object to which the
   read records are appended. See documentation in
-  \code{\link[ff]{read.table.ffdf}} for more details and
-  the example below.}
+  read.table.ffdf for more details and the example below.}
 
   \item{nrows}{Number of rows to read from the query
   resultset. Default value of -1 reads in all rows.}
@@ -56,7 +54,7 @@
 
   \item{asffdf_args}{further arguments passed to
   \code{\link[ff]{as.ffdf}} (ignored if 'x' gives an ffdf
-  object)}
+  object )}
 
   \item{BATCHBYTES}{integer: bytes allowed for the size of
   the data.frame storing the result of reading one chunk.
@@ -70,49 +68,49 @@
   \code{\link[ff]{read.table.ffdf}}}
 
   \item{transFUN}{function applied to the data frame after
-  each chunk is retreived by
-  \code{\link[RODBC]{sqlGetResults}}}
+  each chunk is retreived by \code{RJDBC::fetch}}
 
   \item{...}{optional parameters passed on to transFUN}
 }
 \value{
   An ffdf object unless the query returns zero records in
   which case the function will return the data.frame
-  returned by \code{\link[RODBC]{sqlGetResults}} and
-  possibly transFUN.
+  returned by \code{RJDBC::fetch} and possibly transFUN.
 }
 \description{
-  Read data from a ODBC connection into an
+  Read data from a JDBC connection into an
   \code{\link[ff]{ffdf}}. This can for example be used to
   import large datasets from Oracle, SQLite, MySQL,
   PostgreSQL, Hive or other SQL databases into R. \cr
 }
 \details{
-  Opens up the ODBC connection using
-  \code{RODBC::odbcConnect}, sends the query using
-  \code{RODBC::odbcQuery} and retrieves the results in
-  batches of next.rows rows using
-  \code{RODBC::sqlGetResults}. Heavily borrowed from
-  \code{\link[ff]{read.table.ffdf}}
+  Opens up the JDBC connection using
+  \code{RJDBC::dbConnect}, sends the query using
+  \code{RJDBC::dbSendQuery} and \code{RJDBC::fetch}-es the
+  results in batches of next.rows rows. Heavily borrowed
+  from \code{\link[ff]{read.table.ffdf}}
 }
 \examples{
-##
-## Using the sqlite database (smalldb.sqlite3) in the /inst folder of the package
-## set up the sqlite ODBC driver (www.stats.ox.ac.uk/pub/bdr/RODBC-manual.pd) and call it 'smalltestsqlitedb'
-##
 \dontrun{
-require(RODBC)
-x <- read.odbc.ffdf(
-query = "select * from testdata limit 10000",
-odbcConnect.args = list(dsn="smalltestsqlitedb", uid = "", pwd = ""),
-nrows = -1,
-first.rows = 100, next.rows = 1000, VERBOSE = TRUE)
+require(ff)
+
+##
+## Example query using data in sqlite
+##
+require(RSQLite)
+dbfile <- system.file("smalldb.sqlite3", package="ETLUtils")
+drv <- JDBC(driverClass = "org.sqlite.JDBC", classPath = "/usr/local/lib/sqlite-jdbc-3.7.2.jar")
+query <- "select * from testdata limit 10000"
+x <- read.jdbc.ffdf(query = query, dbConnect.args = list(drv = drv, url = sprintf("jdbc:sqlite:\%s", dbfile)),
+                    first.rows = 100, next.rows = 1000, VERBOSE=TRUE)
+class(x)
+x[1:10, ]
 }
 }
 \author{
   Jan Wijffels
 }
 \seealso{
-  \code{\link[ff]{read.table.ffdf}, \link{read.dbi.ffdf}}
+  \code{\link[ff]{read.table.ffdf}, \link{read.jdbc.ffdf}}
 }
 

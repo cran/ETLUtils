@@ -83,7 +83,7 @@
   Read data from a DBI connection into an
   \code{\link[ff]{ffdf}}. This can for example be used to
   import large datasets from Oracle, SQLite, MySQL,
-  PostgreSQL or other SQL databases into R. \cr
+  PostgreSQL, Hive or other SQL databases into R. \cr
 }
 \details{
   Opens up the DBI connection using \code{DBI::dbConnect},
