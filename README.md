@@ -1,7 +1,3 @@
-[![Build Status](https://travis-ci.org/jwijffels/ETLUtils.png?branch=master)](https://travis-ci.org/jwijffels/ETLUtils)
-[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![Downloads](http://cranlogs.r-pkg.org/badges/ETLUtils?color=brightgreen)](http://cran.rstudio.com/package=ETLUtils)
-
-
 ETLUtils
 =========
 
@@ -12,7 +8,7 @@ Currently the following functions might be useful to you if you have some large 
   - read.odbc.ffdf (reading of SQL data through RODBC)
   - read.jdbc.ffdf (reading of SQL data through RJDBC)
 
-An example can be found at http://www.bnosac.be/blog/19-get-your-large-sql-data-in-ff-swiftly
+An example can be found at http://www.bnosac.be/index.php/blog/5-get-your-large-sql-data-in-ff-swiftly and at http://www.bnosac.be/index.php/blog/6-readodbcffdf-a-readdbiffdf-for-fetching-large-corporate-sql-data
 
 For users who want to store data from an ffdf back in a database, the package also provides
 
@@ -29,14 +25,11 @@ CRAN
 -----------
 This is the development version of the package which is available at CRAN.
 
-To install the latest version from github:
-```
-devtools::install_github("jwijffels/ETLUtils")
-```
+To install the latest version from github `remotes::install_github("jwijffels/ETLUtils")`
 
 To get the lastest version from CRAN:
 
 * [ETLUtils @ CRAN]
 
 
-  [ETLUtils @ CRAN]: http://cran.r-project.org/web/packages/ETLUtils/index.html
+  [ETLUtils @ CRAN]: https://cran.r-project.org/package=ETLUtils
