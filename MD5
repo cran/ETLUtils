@@ -1,8 +1,8 @@
-9903991ff4adc4b337b60080cc96cb9c *DESCRIPTION
+464470e3fca7fa04bf1b1a93db3246d5 *DESCRIPTION
 22a728a833ab53b981d198f593ba88d4 *NAMESPACE
-197a73526eb8af6aba255c4bfafac705 *NEWS
+438e785f2572ca43cf991eb0b5a31f60 *NEWS
 f643cb77dc7c650a15264eed47c8ca6e *R/All_Imports.R
-9b521f8f15ebeb46e1bb6dce423f4ee9 *R/ffsql.R
+a746fcb8191b64bbc7dc5d680ba64b03 *R/ffsql.R
 93f4207178ab905ff2f3899d966d67f4 *R/matchmerge.R
 0740a82f55a66b882448dc49d8fa161c *R/pkg.R
 93b818dc92049546fffd44301b5d8d9d *R/utils.R
@@ -17,6 +17,6 @@ ffbd251156867ee05297ae6408fd1f39 *man/naLOCFPlusone.Rd
 caffce00518827187397d486cce2bca9 *man/read.odbc.ffdf.Rd
 55fb3745849bf043fef097d9a7b2875e *man/recoder.Rd
 34227eae030f3880ed369b6cdd78ddcb *man/renameColumns.Rd
-3a0a01184af8e9df83964937db03b067 *man/write.dbi.ffdf.Rd
+d1f4e441f89a0f4d50bc15f3d5c4c520 *man/write.dbi.ffdf.Rd
 fe1953897b23afa0140f6278df513142 *man/write.jdbc.ffdf.Rd
 25f80f98ae53b4955738b3049ddb60e5 *man/write.odbc.ffdf.Rd
