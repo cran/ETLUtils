@@ -12,14 +12,13 @@ Description: Provides functions to facilitate the use of the 'ff' package
     using 'DBI', 'RODBC' and 'RJDBC'. Also contains some basic utility functions to
     do fast left outer join merging based on 'match', factorisation of data and a
     basic function for re-coding vectors.
-Version: 1.4.1
+Version: 1.5
 URL: https://github.com/jwijffels/ETLUtils
-Date: 2018-01-25
-Depends: ff (>= 2.2-13)
-Imports: bit (>= 1.1-12)
+Depends: ff (>= 4.0.0)
+Imports: bit (>= 4.0.0)
 Suggests: RSQLite, zoo, DBI, RODBC, RJDBC
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.0
 NeedsCompilation: no
-Packaged: 2018-01-25 21:48:39 UTC; Jan
+Packaged: 2020-07-31 08:14:44 UTC; Jan
 Repository: CRAN
-Date/Publication: 2018-01-25 21:49:19 UTC
+Date/Publication: 2020-08-03 09:42:08 UTC

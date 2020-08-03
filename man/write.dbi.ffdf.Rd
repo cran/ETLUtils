@@ -4,9 +4,16 @@
 \alias{write.dbi.ffdf}
 \title{Write ffdf data to a database table by using a DBI connection.}
 \usage{
-write.dbi.ffdf(x, name, dbConnect.args = list(drv = NULL, dbname = NULL,
-  username = "", password = ""), RECORDBYTES = sum(.rambytes[vmode(x)]),
-  BATCHBYTES = getOption("ffbatchbytes"), by = NULL, VERBOSE = FALSE, ...)
+write.dbi.ffdf(
+  x,
+  name,
+  dbConnect.args = list(drv = NULL, dbname = NULL, username = "", password = ""),
+  RECORDBYTES = sum(.rambytes[vmode(x)]),
+  BATCHBYTES = getOption("ffbatchbytes"),
+  by = NULL,
+  VERBOSE = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{the \code{\link[ff]{ffdf}} to write to the database}

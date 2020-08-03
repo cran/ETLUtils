@@ -988,7 +988,7 @@ write.dbi.ffdf <- function(x, name,
   dbiinfo$channel <- do.call('dbConnect', dbConnect.args)
   on.exit(cleanupConnection(dbiinfo))
     
-  chunks <- ff::chunk.ffdf(x, RECORDBYTES=RECORDBYTES, BATCHBYTES=BATCHBYTES, by=by)
+  chunks <- bit::chunk(x, RECORDBYTES=RECORDBYTES, BATCHBYTES=BATCHBYTES, by=by)
   for(i in seq_along(chunks)){
     if (VERBOSE){
       cat(sprintf("%s dbWriteTable chunk %s/%s\n", Sys.time(), i, length(chunks)))
@@ -1076,7 +1076,7 @@ write.jdbc.ffdf <- function(x, name,
   dbiinfo$channel <- do.call('dbConnect', dbConnect.args)
   on.exit(cleanupConnection(dbiinfo))
   
-  chunks <- ff::chunk.ffdf(x, RECORDBYTES=RECORDBYTES, BATCHBYTES=BATCHBYTES, by=by)
+  chunks <- bit::chunk(x, RECORDBYTES=RECORDBYTES, BATCHBYTES=BATCHBYTES, by=by)
   for(i in seq_along(chunks)){
     if (VERBOSE){
       cat(sprintf("%s dbWriteTable chunk %s/%s\n", Sys.time(), i, length(chunks)))
@@ -1161,7 +1161,7 @@ write.odbc.ffdf <- function(x, tablename,
   odbcinfo$channel <- do.call('odbcConnect', odbcConnect.args)
   on.exit(try(RODBC::odbcClose(odbcinfo$channel), silent = TRUE))
   
-  chunks <- ff::chunk.ffdf(x, RECORDBYTES=RECORDBYTES, BATCHBYTES=BATCHBYTES, by=by)
+  chunks <- bit::chunk(x, RECORDBYTES=RECORDBYTES, BATCHBYTES=BATCHBYTES, by=by)
   for(i in seq_along(chunks)){
     if (VERBOSE){
       cat(sprintf("%s sqlSave chunk %s/%s\n", Sys.time(), i, length(chunks)))
